@@ -1,0 +1,47 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "@angular/material/prebuilt-themes/indigo-pink.css";
+
+:root {
+  --twt-form-field-font-size: .875rem;
+
+  --twt-search-bar-width: 37.5rem;
+
+  --twt-header-row-height: 2.5625rem;
+  --twt-header-row-background-color: #eeeeee;
+
+  --twt-row-height: 2.25rem;
+  --twt-row-hover-odd-background-color: #dddddd;
+  --twt-row-hover-even-background-color: #d0d0d0;
+  --twt-row-zebra-odd-background-color: var(--mat-app-background-color, transparent);
+  --twt-row-zebra-even-background-color: #eeeeee;
+
+  --twt-action-column-sticky-left-border: #b4b5bb;
+
+  --twt-paginator-height: 3.5rem;
+  --twt-paginator-mat-form-field-height: 2.5625rem;
+  --twt-paginator-range-actions-height: 2.5rem;
+  --twt-paginator-font-size: .875rem;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.gold {
+  color: goldenrod !important;
+}
+
+.bold {
+  font-weight: bold !important;
+}
+
+.mat-mdc-menu-item:focus {
+  outline: 2px solid currentColor !important;
+}

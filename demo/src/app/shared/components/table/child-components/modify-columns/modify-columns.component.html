@@ -1,0 +1,47 @@
+<div class="column-modifications-container">
+  <ul>
+    @for (column of moddedCols; track column.field; let i = $index) {
+      <li class="mat-elevation-z1">
+        @if (config.showHideColumns) {
+          <button mat-icon-button (click)="toggleColumn(column)">
+            <mat-icon>{{ column.visible ? 'visibility' : 'visibility_off' }}</mat-icon>
+          </button>
+        }
+        @if (config.reorderColumns) {
+          <button mat-icon-button
+            [disabled]="i === 0 || !column.visible"
+            [attr.aria-label]="'Move {{ column.header }} up'"
+            (click)="moveColumn(i, -1)">
+            <mat-icon>arrow_upward</mat-icon>
+          </button>
+          <button mat-icon-button
+            [disabled]="i === moddedCols.length - 1 || !column.visible"
+            [attr.aria-label]="'Move {{ column.header }} down'"
+            (click)="moveColumn(i, 1)">
+            <mat-icon>arrow_downward</mat-icon>
+          </button>
+        }
+        <span [class.disabled-col]="!column.visible">{{ column.header }}</span>
+      </li>
+    }
+  </ul>
+
+  <span class="spacer"></span>
+
+  <div class="action-buttons">
+    <button mat-flat-button
+      color="accent"
+      (click)="resetColumns()">Reset to default
+    </button>
+    <div class="two-buttons">
+      <button mat-stroked-button
+        color="primary"
+        (click)="cancel()">Cancel
+      </button>
+      <button mat-raised-button
+        color="primary"
+        (click)="close()">Apply Changes
+      </button>
+    </div>
+  </div>
+</div>

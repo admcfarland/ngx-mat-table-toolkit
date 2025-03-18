@@ -1,0 +1,89 @@
+<div class="project-example-header">
+  <h2>{{ toggleExample === 'client' ? 'Client side paged table' : 'Server side paged table' }}</h2>
+  <app-span-filler></app-span-filler>
+  <span>Client</span>
+  <mat-slide-toggle color="warn" [checked]="toggleExample !== 'client'" (change)="onToggleChange($event.checked)"></mat-slide-toggle>
+  <span>Server</span>
+</div>
+
+@if (toggleExample === 'client') {
+  <!-- Client paging setup -->
+  <div class="outer-table-container">
+    <div class="table-paginator-container">
+      <twt-table #clientTable
+        [tableConfig]="clientConfig"
+        [tableData]="paginatedData"
+        [pageIndex]="cPageIndex"
+        [pageSize]="cPageSize"
+        (filterChange)="clientFilterChanged($event)"
+        (sortChange)="clientSortChanged($event)">
+        <div>
+          <mat-form-field appearance="outline">
+            <mat-label>Filter by Symbol</mat-label>
+            <mat-select #symbolSelect
+              [(ngModel)]="clientColumnFilters['symbol']"
+              (selectionChange)="onSelectChange($event.value)">
+              @if (!symbolSelect.multiple) {
+                <mat-option [value]=""> -- </mat-option>
+              }
+              @for (symbol of clientSymbols; track symbol) {
+                <mat-option [value]="symbol">{{ symbol }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div>
+          <mat-chip-listbox aria-label="select a filter"
+            (change)="onChipChange($event.value)"
+            multiple>
+            <mat-chip-option color="primary" [value]="{ field: 'name', value:'Carbon' }"> Carbon </mat-chip-option>
+            <mat-chip-option color="primary" [value]="{ field: 'online', value:true }"> Online Graduate </mat-chip-option>
+            <mat-chip-option color="primary" [value]="{ field: 'career', value:'Paleontologist' }"> Paleontologist </mat-chip-option>
+          </mat-chip-listbox>
+        </div>
+      </twt-table>
+  
+      <mat-divider></mat-divider>
+      
+      <twt-client-paginator
+        [accessibleLabel]="accessibleLabel"
+        [pageIndex]="cPageIndex"
+        [pageSize]="cPageSize"
+        [pageSizeOptions]="cPageSizeOptions"
+        [totalData]="filteredData"
+        showFirstLastButtons
+        showGoToPage
+        (paginatedData)="updateDataClient($event)">
+      </twt-client-paginator>
+    </div>
+  </div>
+} @else {
+  <!-- Server paging setup -->
+  <div class="outer-table-container">
+    <div class="table-paginator-container">
+      <twt-table #serverTable
+        [loading]="loading"
+        [tableConfig]="serverConfig"
+        [tableData]="(serverData$ | async) ?? []"
+        [pageIndex]="sPageIndex"
+        [pageSize]="sPageSize"
+        (getData)="tableDataRequestServer()"
+        (filterChange)="serverFilterChanged($event)"
+        (sortChange)="serverSortChanged($event)">
+      </twt-table>
+  
+      <mat-divider></mat-divider>
+  
+      <twt-server-paginator
+        [accessibleLabel]="accessibleLabel"
+        [pageIndex]="sPageIndex"
+        [pageSize]="sPageSize"
+        [pageSizeOptions]="sPageSizeOptions"
+        [disabled]="loading"
+        showFirstLastButtons
+        showGoToPage
+        (fetchData)="updateDataServer()">
+      </twt-server-paginator>
+    </div>
+  </div>
+}
