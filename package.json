@@ -1,6 +1,6 @@
 {
   "name": "ngx-mat-table-toolkit",
-  "version": "0.0.0",
+  "version": "0.17.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -9,6 +9,25 @@
     "test": "ng test"
   },
   "private": true,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/admcfarland/ngx-mat-table-toolkit.git"
+  },
+  "author": {
+    "name": "Andre McFarland",
+    "email": "andre.mcfarland@yahoo.com",
+    "url": "https://github.com/admcfarland"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/your-username/ngx-mat-table-toolkit/issues"
+  },
+  "keywords": [
+    "angular",
+    "material",
+    "table",
+    "toolkit"
+  ],
   "dependencies": {
     "@angular/animations": "^17.3.0",
     "@angular/cdk": "^17.3.6",
