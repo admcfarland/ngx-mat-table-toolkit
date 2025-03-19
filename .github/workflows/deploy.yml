@@ -6,6 +6,7 @@ on:
       - main
 
 permissions:
+  contents: write
   pages: write
 
 jobs:
@@ -26,7 +27,7 @@ jobs:
       run: npm ci
 
     - name: Build Angular Project
-      run: npm run build -- --configuration production
+      run: npm run build
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v4
