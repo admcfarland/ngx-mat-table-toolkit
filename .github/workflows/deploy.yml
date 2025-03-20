@@ -34,12 +34,12 @@ jobs:
       run: npm run build
 
     - name: Debug Build Output
-      run: ls -la ngx-mat-table-toolkit/dist
+      run: ls -la dist/demo
 
     - name: Upload artifacts
       uses: actions/upload-pages-artifact@v3
       with:
-        path: ngx-mat-table-toolkit/dist/demo
+        path: dist/demo
 
     - name: Deploy to GitHub Pages
       id: deployment
