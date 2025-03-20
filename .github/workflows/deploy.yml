@@ -27,10 +27,10 @@ jobs:
       run: npm ci
 
     - name: Build Angular Project
-      run: npm run build --base-href /ngx-mat-table-toolkit/
+      run: npm run build --base-href /demo/
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v4
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: dist/demo/browser
+        publish_dir: dist/demo
