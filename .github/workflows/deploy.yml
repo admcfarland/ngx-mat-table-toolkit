@@ -34,7 +34,7 @@ jobs:
       run: npm run build
 
     - name: Debug Build Output
-      run: ls -la dist/demo
+      run: ls -la dist/demo/browser
 
     - name: Upload artifacts
       uses: actions/upload-pages-artifact@v3
