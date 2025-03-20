@@ -30,13 +30,13 @@ jobs:
     - name: Install Dependencies
       run: npm ci
 
-    - name: Build Angular Project
+    - name: Build Demo
       run: npm run build
 
     - name: Upload artifacts
       uses: actions/upload-pages-artifact@v3
       with:
-        path: dist/demo/browser
+        path: dist/demo
 
     - name: Deploy to GitHub Pages
       id: deployment
