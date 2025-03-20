@@ -5,14 +5,17 @@ on:
     branches:
       - main
 
-permissions:
-  contents: write
-  pages: write
-
 jobs:
-  build-and-deploy:
+  build-and-deploy-demo:
     name: Deploy Demo
     runs-on: ubuntu-latest
+
+    permissions:
+      pages: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url}}
 
     steps:
     - name: Checkout Repository
@@ -30,7 +33,5 @@ jobs:
       run: npm run build
 
     - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v4
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: dist/demo
+      id: deployment
+      uses: actions/deploy-pages@v4
