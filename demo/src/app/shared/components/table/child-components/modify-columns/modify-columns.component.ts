@@ -10,7 +10,7 @@ import { Column, ColumnsConfig } from '../../models/column.model';
 import { TableModule } from '../../table.module';
 
 @Component({
-  selector: 'app-modify-columns',
+  selector: 'mtt-modify-columns',
   standalone: true,
   imports: [MatCheckboxModule, MatButtonModule, MatIconModule, MatFormFieldModule, ReactiveFormsModule, MatButtonToggleModule, TableModule],
   templateUrl: './modify-columns.component.html',

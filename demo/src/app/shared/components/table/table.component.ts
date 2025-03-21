@@ -27,7 +27,7 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
 const DEBOUNCE_DELAY = 500;
 
 @Component({
-  selector: 'twt-table',
+  selector: 'mtt-table',
   standalone: true,
   imports: [TableModule],
   templateUrl: './table.component.html',

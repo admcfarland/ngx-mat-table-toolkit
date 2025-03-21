@@ -10,7 +10,7 @@
   <!-- Client paging setup -->
   <div class="outer-table-container">
     <div class="table-paginator-container">
-      <twt-table #clientTable
+      <mtt-table #clientTable
         [tableConfig]="clientConfig"
         [tableData]="paginatedData"
         [pageIndex]="cPageIndex"
@@ -56,11 +56,11 @@
             <span>&uarr;&uarr;&uarr;</span>
           </div>
         </div>
-      </twt-table>
+      </mtt-table>
   
       <mat-divider></mat-divider>
       
-      <twt-client-paginator
+      <mtt-client-paginator
         [accessibleLabel]="accessibleLabel"
         [pageIndex]="cPageIndex"
         [pageSize]="cPageSize"
@@ -69,14 +69,14 @@
         showFirstLastButtons
         showGoToPage
         (paginatedData)="updateDataClient($event)">
-      </twt-client-paginator>
+      </mtt-client-paginator>
     </div>
   </div>
 } @else {
   <!-- Server paging setup -->
   <div class="outer-table-container">
     <div class="table-paginator-container">
-      <twt-table #serverTable
+      <mtt-table #serverTable
         [loading]="loading"
         [tableConfig]="serverConfig"
         [tableData]="(serverData$ | async) ?? []"
@@ -85,11 +85,11 @@
         (getData)="tableDataRequestServer()"
         (filterChange)="serverFilterChanged($event)"
         (sortChange)="serverSortChanged($event)">
-      </twt-table>
+      </mtt-table>
   
       <mat-divider></mat-divider>
   
-      <twt-server-paginator
+      <mtt-server-paginator
         [accessibleLabel]="accessibleLabel"
         [pageIndex]="sPageIndex"
         [pageSize]="sPageSize"
@@ -98,7 +98,7 @@
         showFirstLastButtons
         showGoToPage
         (fetchData)="updateDataServer()">
-      </twt-server-paginator>
+      </mtt-server-paginator>
     </div>
   </div>
 }
