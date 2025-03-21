@@ -8,8 +8,6 @@ on:
 jobs:
   build-and-deploy-demo:
     name: Deploy Demo
-    run: |
-      cd demo
     runs-on: ubuntu-latest
 
     permissions:
@@ -18,7 +16,7 @@ jobs:
 
     environment:
       name: github-pages
-      url: ${{ steps.deployment.outputs.page_url}}
+      url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
     - name: Checkout Repository
@@ -30,15 +28,19 @@ jobs:
         node-version: '^20.9.0'
 
     - name: Install Dependencies
+      working-directory: demo
       run: npm ci
 
     - name: Build Demo
+      working-directory: demo
       run: npm run build
 
     - name: Debug Build Output
+      working-directory: demo
       run: ls -la dist/demo
 
     - name: Upload artifacts
+      working-directory: demo
       uses: actions/upload-pages-artifact@v3
       with:
         path: dist/demo
