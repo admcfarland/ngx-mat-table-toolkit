@@ -6,12 +6,13 @@ on:
       - main
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   build-and-deploy-demo:
     name: Deploy Demo
     runs-on: ubuntu-latest
+    permissions: write
 
     steps:
     - name: Checkout Repository
