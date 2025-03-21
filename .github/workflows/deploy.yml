@@ -33,7 +33,7 @@ jobs:
 
     - name: Build Demo
       working-directory: demo
-      run: npm run build
+      run: npm run build --base-href=/demo/
 
     - name: Debug Build Output
       working-directory: demo
