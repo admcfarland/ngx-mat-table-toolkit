@@ -38,7 +38,7 @@ jobs:
 
     - name: Build Demo
       working-directory: demo
-      run: npm run build --base-href=https://admcfarland.github.io/ngx-mat-table-toolkit/
+      run: npm run build --base-href="https://admcfarland.github.io/ngx-mat-table-toolkit/"
 
     - name: Debug Build Output
       working-directory: demo
