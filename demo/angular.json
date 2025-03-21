@@ -10,26 +10,26 @@
           "style": "scss"
         }
       },
-      "root": "demo",
-      "sourceRoot": "demo/src",
+      "root": "",
+      "sourceRoot": "src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": "dist/demo",
-            "index": "demo/src/index.html",
-            "browser": "demo/src/main.ts",
+            "index": "src/index.html",
+            "browser": "src/main.ts",
             "polyfills": [
               "zone.js"
             ],
-            "tsConfig": "demo/tsconfig.app.json",
+            "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "demo/src/favicon.ico"
+              "src/favicon.ico"
             ],
             "styles": [
-              "demo/src/styles.scss"
+              "src/styles.scss"
             ],
             "scripts": []
           },
@@ -79,13 +79,13 @@
               "zone.js",
               "zone.js/testing"
             ],
-            "tsConfig": "demo/tsconfig.spec.json",
+            "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
-              "demo/src/favicon.ico"
+              "src/favicon.ico"
             ],
             "styles": [
-              "demo/src/styles.scss"
+              "src/styles.scss"
             ],
             "scripts": []
           }

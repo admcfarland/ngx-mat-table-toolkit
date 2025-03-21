@@ -39,9 +39,10 @@
       }
     },
     {
-      "label": "ng serve",
+      "label": "serve demo",
       "type": "shell",
       "command": "ng serve",
+      "group": "build",
       "isBackground": true,
       "problemMatcher": {
         "owner": "typescript",
@@ -49,14 +50,13 @@
         "background": {
           "activeOnStart": true,
           "beginsPattern": {
-            "regexp": ".*Compiling @angular.*"
+            "regexp": "(.*?)"
           },
           "endsPattern": {
-            "regexp": ".*Compiled successfully.*"
+            "regexp": "bundle generation complete"
           }
         }
-      },
-      "group": "build",
-    },
+      }
+    }
   ]
 }
