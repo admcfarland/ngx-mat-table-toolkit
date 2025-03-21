@@ -41,7 +41,7 @@
     {
       "label": "serve demo",
       "type": "shell",
-      "command": "ng serve",
+      "command": "cd demo && ng serve",
       "group": "build",
       "isBackground": true,
       "problemMatcher": {
