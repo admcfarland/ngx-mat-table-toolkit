@@ -8,6 +8,8 @@ on:
 jobs:
   build-and-deploy-demo:
     name: Deploy Demo
+    run: |
+      cd demo
     runs-on: ubuntu-latest
 
     permissions:
@@ -31,10 +33,10 @@ jobs:
       run: npm ci
 
     - name: Build Demo
-      run: npm run build --base-href demo
+      run: npm run build
 
     - name: Debug Build Output
-      run: ls -la dist/demo/browser
+      run: ls -la dist/demo
 
     - name: Upload artifacts
       uses: actions/upload-pages-artifact@v3
