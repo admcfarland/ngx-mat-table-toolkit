@@ -40,10 +40,9 @@ jobs:
       run: ls -la dist/demo
 
     - name: Upload artifacts
-      working-directory: demo
       uses: actions/upload-pages-artifact@v3
       with:
-        path: dist/demo
+        path: demo/dist/demo
 
     - name: Deploy to GitHub Pages
       id: deployment
