@@ -9,7 +9,7 @@ import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/materia
  * It provides a title and a close button for user interaction.
  */
 @Component({
-  selector: 'twt-text-display-modal',
+  selector: 'mtt-text-display-modal',
   standalone: true,
   imports: [MatDialogModule, MatButtonModule],
   templateUrl: './text-display-modal.component.html',

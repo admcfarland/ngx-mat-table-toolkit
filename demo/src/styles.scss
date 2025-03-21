@@ -3,25 +3,25 @@
 @import "@angular/material/prebuilt-themes/indigo-pink.css";
 
 :root {
-  --twt-form-field-font-size: .875rem;
+  --mtt-form-field-font-size: .875rem;
 
-  --twt-search-bar-width: 37.5rem;
+  --mtt-search-bar-width: 37.5rem;
 
-  --twt-header-row-height: 2.5625rem;
-  --twt-header-row-background-color: #eeeeee;
+  --mtt-header-row-height: 2.5625rem;
+  --mtt-header-row-background-color: #eeeeee;
 
-  --twt-row-height: 2.25rem;
-  --twt-row-hover-odd-background-color: #dddddd;
-  --twt-row-hover-even-background-color: #d0d0d0;
-  --twt-row-zebra-odd-background-color: var(--mat-app-background-color, transparent);
-  --twt-row-zebra-even-background-color: #eeeeee;
+  --mtt-row-height: 2.25rem;
+  --mtt-row-hover-odd-background-color: #dddddd;
+  --mtt-row-hover-even-background-color: #d0d0d0;
+  --mtt-row-zebra-odd-background-color: var(--mat-app-background-color, transparent);
+  --mtt-row-zebra-even-background-color: #eeeeee;
 
-  --twt-action-column-sticky-left-border: #b4b5bb;
+  --mtt-action-column-sticky-left-border: #b4b5bb;
 
-  --twt-paginator-height: 3.5rem;
-  --twt-paginator-mat-form-field-height: 2.5625rem;
-  --twt-paginator-range-actions-height: 2.5rem;
-  --twt-paginator-font-size: .875rem;
+  --mtt-paginator-height: 3.5rem;
+  --mtt-paginator-mat-form-field-height: 2.5625rem;
+  --mtt-paginator-range-actions-height: 2.5rem;
+  --mtt-paginator-font-size: .875rem;
 }
 
 html,

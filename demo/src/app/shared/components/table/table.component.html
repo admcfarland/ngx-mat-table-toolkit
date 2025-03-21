@@ -181,10 +181,10 @@
                     <ng-container *ngTemplateOutlet="slideToggleTemplate; context: {checked: column.checked, row: row}"></ng-container>
                   }
                   @default {
-                    <twt-truncated-text-details
+                    <mtt-truncated-text-details
                       [fullText]="(column.valueGetter ? column.valueGetter(row) : (row | pathValue: column.field))"
                       [limit]="column.truncationLimit">
-                    </twt-truncated-text-details>
+                    </mtt-truncated-text-details>
                   }
                 }
               </td>

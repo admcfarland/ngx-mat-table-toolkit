@@ -1,7 +1,7 @@
 .paginator {
   display: block;
-  height: var(--twt-paginator-height);
-  font-size: var(--twt-paginator-font-size, initial);
+  height: var(--mtt-paginator-height);
+  font-size: var(--mtt-paginator-font-size, initial);
   font-weight: 100;
   line-height: 1rem;
   letter-spacing: 0.4px;
@@ -55,13 +55,13 @@
 .paginator-go-to-page-input {
   margin: 0 .25rem;
   width: 5.25rem;
-  font-size: var(--twt-paginator-font-size, initial);
+  font-size: var(--mtt-paginator-font-size, initial);
 }
 
 .paginator-range-actions {
   display: flex;
   align-items: center;
-  height: var(--twt-paginator-range-actions-height);
+  height: var(--mtt-paginator-range-actions-height);
 }
 
 .paginator-range-label {
@@ -70,10 +70,10 @@
 
 .mat-mdc-select {
   line-height: 1.5;
-  font-size: var(--twt-paginator-font-size, initial);
+  font-size: var(--mtt-paginator-font-size, initial);
 }
 
 mat-form-field.small {
-  --mat-form-field-container-height: var(--twt-paginator-mat-form-field-height);
+  --mat-form-field-container-height: var(--mtt-paginator-mat-form-field-height);
   --mat-form-field-container-vertical-padding: .5em;
 }

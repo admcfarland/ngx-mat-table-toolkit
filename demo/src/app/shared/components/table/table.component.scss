@@ -6,7 +6,7 @@
   overflow: hidden;
 
   .table-search-bar {
-    width: var(--twt-search-bar-width);
+    width: var(--mtt-search-bar-width);
     min-width: 18.75rem;
     margin-top: .25rem;
   }
@@ -86,36 +86,36 @@ table {
 }
 
 .mat-mdc-header-row {
-  height: var(--twt-header-row-height);
-  background-color: var(--twt-header-row-background-color, transparent);
+  height: var(--mtt-header-row-height);
+  background-color: var(--mtt-header-row-background-color, transparent);
 }
 
 .mat-mdc-row {
-  height: var(--twt-row-height);
+  height: var(--mtt-row-height);
 
   &.zebra-rows:nth-child(odd) {
-    background-color: var(--twt-row-zebra-odd-background-color);
+    background-color: var(--mtt-row-zebra-odd-background-color);
   }
 
   &.zebra-rows:nth-child(even) {
-    background-color: var(--twt-row-zebra-even-background-color);
+    background-color: var(--mtt-row-zebra-even-background-color);
   }
 
   &.hover:hover:nth-child(odd) {
-    background-color: var(--twt-row-hover-odd-background-color);
+    background-color: var(--mtt-row-hover-odd-background-color);
   }
 
   &.hover:hover:nth-child(even) {
-    background-color: var(--twt-row-hover-even-background-color);
+    background-color: var(--mtt-row-hover-even-background-color);
   }
 }
 
 .mat-column-actions {
-  border-left: 1px solid var(--twt-action-column-sticky-left-border);
+  border-left: 1px solid var(--mtt-action-column-sticky-left-border);
 }
 
 .mat-mdc-form-field {
-  font-size: var(--twt-form-field-font-size, initial);
+  font-size: var(--mtt-form-field-font-size, initial);
   width: 100%;
 }
 

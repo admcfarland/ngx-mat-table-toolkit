@@ -12,7 +12,7 @@ const ELLIPSIS = '...';
  * This component is useful for displaying long text content in a concise manner, with the ability to expand or view details.
  */
 @Component({
-  selector: 'twt-truncated-text-details',
+  selector: 'mtt-truncated-text-details',
   standalone: true,
   imports: [MatButtonModule, MatIconModule],
   templateUrl: './truncated-text-details.component.html',
