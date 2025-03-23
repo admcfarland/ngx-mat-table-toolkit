@@ -1,39 +1,42 @@
 import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
-import { TableConfig } from './shared/components/table/models/table.model';
-import { TableComponent } from './shared/components/table/table.component';
 import { MockDataService, MockModel, COMPOUND_FIELDS } from './mock-data.service';
-import { ClientPaginatorComponent } from './shared/components/paginator/client-paginator/client-paginator.component';
-import { ServerPaginatorComponent } from './shared/components/paginator/server-paginator/server-paginator.component';
 import { catchError, finalize, map, Observable, of } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 import { MatDividerModule } from '@angular/material/divider';
-import { TableColumnService } from './shared/services/table-column.service';
-import { Column } from './shared/components/table/models/column.model';
-import { PathValuePipe } from './shared/pipes/path-value.pipe';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { SpanFillerComponent } from './shared/components/span-filler/span-filler.component';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatSelectChange, MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
+import {
+  Column,
+  TableConfig,
+  MttClientPaginator,
+  MttPaginatorModule,
+  MttServerPaginator,
+  MttTable,
+  MttTableColumnService,
+  PathValuePipe
+} from 'ngx-mat-table-toolkit';
 
 const AFREFRESH = 2000;
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [TableComponent, ClientPaginatorComponent, ServerPaginatorComponent, AsyncPipe, MatDividerModule, MatSlideToggleModule, SpanFillerComponent,
-    MatChipsModule, MatSelectModule, MatFormFieldModule, FormsModule
+  imports: [MttTable, AsyncPipe, MatDividerModule, MatSlideToggleModule, SpanFillerComponent,
+    MatChipsModule, MatSelectModule, MatFormFieldModule, FormsModule, MttPaginatorModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   providers: [PathValuePipe],
 })
 export class AppComponent implements OnInit {
-  @ViewChild('clientTable') clientTable!: TableComponent<MockModel>;
-  @ViewChild('serverTable') serverTable!: TableComponent<MockModel>;
-  @ViewChild(ClientPaginatorComponent) clientPaginator!: ClientPaginatorComponent;
-  @ViewChild(ServerPaginatorComponent) serverPaginator!: ServerPaginatorComponent;
+  @ViewChild('clientTable') clientTable!: MttTable<MockModel>;
+  @ViewChild('serverTable') serverTable!: MttTable<MockModel>;
+  @ViewChild(MttClientPaginator) clientPaginator!: MttClientPaginator<MockModel>;
+  @ViewChild(MttServerPaginator) serverPaginator!: MttServerPaginator;
 
   // Table component configuation.
   tableConfig: TableConfig<MockModel> = {
@@ -266,7 +269,7 @@ export class AppComponent implements OnInit {
   constructor(
     private mockService: MockDataService,
     private detector: ChangeDetectorRef,
-    private flattenService: TableColumnService,
+    private flattenService: MttTableColumnService,
     private pvp: PathValuePipe,
   ) {
     this.loading = true;
