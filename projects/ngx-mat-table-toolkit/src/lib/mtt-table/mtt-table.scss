@@ -1,0 +1,124 @@
+.table-filter-container {
+  padding: .25em 0;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  overflow: hidden;
+
+  .table-search-bar {
+    width: var(--mtt-search-bar-width);
+    min-width: 18.75rem;
+    margin-top: .25rem;
+  }
+
+  .table-non-search-bar-container {
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    flex: auto;
+    justify-content: flex-end;
+  }
+
+  .multiple-selection-container {
+    display: flex;
+    align-items: center;
+    gap: .25em;
+  }
+
+  .auto-refresh-toggle {
+    padding: 0 .25em;
+  }
+}
+
+.table-container {
+  margin: 0 auto;
+  overflow: auto;
+  position: relative;
+}
+
+.progress-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 110;
+}
+
+/* Define the pulsing animation */
+@keyframes pulse {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  50% {
+    opacity: 0.75;
+    transform: scale(1.5);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Apply the animation to elements with the class "pulse" */
+.pulsing {
+  animation: pulse 3s ease-in-out infinite;
+}
+
+table {
+  width: 100%;
+
+  th,
+  td {
+    white-space: nowrap;
+  }
+
+  tr {
+    &.mat-mdc-no-data-row {
+      white-space: nowrap;
+    }
+  }
+
+  &.is-loading {
+    opacity: 55%;
+  }
+}
+
+.mat-mdc-header-row {
+  height: var(--mtt-header-row-height);
+  background-color: var(--mtt-header-row-background-color, transparent);
+}
+
+.mat-mdc-row {
+  height: var(--mtt-row-height);
+
+  &.zebra-rows:nth-child(odd) {
+    background-color: var(--mtt-row-zebra-odd-background-color);
+  }
+
+  &.zebra-rows:nth-child(even) {
+    background-color: var(--mtt-row-zebra-even-background-color);
+  }
+
+  &.hover:hover:nth-child(odd) {
+    background-color: var(--mtt-row-hover-odd-background-color);
+  }
+
+  &.hover:hover:nth-child(even) {
+    background-color: var(--mtt-row-hover-even-background-color);
+  }
+}
+
+.mat-column-actions {
+  border-left: 1px solid var(--mtt-action-column-sticky-left-border);
+}
+
+.mat-mdc-form-field {
+  font-size: var(--mtt-form-field-font-size, initial);
+  width: 100%;
+}
+
+::placeholder {
+  font-style: italic;
+}

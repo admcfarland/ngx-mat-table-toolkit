@@ -1,0 +1,90 @@
+.paginator {
+  display: block;
+  height: var(--mtt-paginator-height);
+  font-size: var(--mtt-paginator-font-size, initial);
+  font-weight: 100;
+  line-height: 1rem;
+  letter-spacing: 0.4px;
+}
+
+.paginator-outer-container {
+  display: flex;
+  height: inherit;
+}
+
+.paginator-container {
+  display: flex;
+  align-items: center;
+  padding: 0 .5em;
+  flex-wrap: wrap;
+  width: 100%;
+  height: inherit;
+  min-height: inherit;
+  justify-content: space-between;
+}
+
+.paginator-page-size {
+  display: flex;
+  align-items: baseline;
+}
+
+.paginator-size-label {
+  margin: 0 .25rem;
+}
+
+.paginator-page-size-select {
+  margin: 0 .25rem;
+  width: 5.25rem;
+}
+
+.paginator-navigations {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.paginator-go-to-page {
+  display: flex;
+  align-items: baseline;
+  margin-right: 2rem;
+}
+
+.paginator-go-to-page-label {
+  margin: 0 .25rem;
+}
+
+.paginator-go-to-page-input {
+  margin: 0 .25rem;
+  width: 5.25rem;
+  font-size: var(--mtt-paginator-font-size, initial);
+}
+
+.paginator-range-actions {
+  display: flex;
+  align-items: center;
+  height: var(--mtt-paginator-range-actions-height);
+}
+
+// .paginator-page-display {
+//   width: calc(var(--mtt-paginator-height) - calc(var(--mtt-paginator-height) * 0.29));
+//   height: calc(var(--mtt-paginator-height) - calc(var(--mtt-paginator-height) * 0.29));
+//   border: 1px solid currentcolor;
+//   border-radius: 21px;
+//   margin: .25rem;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+// }
+
+.paginator-range-label {
+  margin: 0.5rem .25rem;
+}
+
+.mat-mdc-select {
+  line-height: 1.5;
+  font-size: var(--mtt-paginator-font-size, initial);
+}
+
+mat-form-field.small {
+  --mat-form-field-container-height: var(--mtt-paginator-mat-form-field-height);
+  --mat-form-field-container-vertical-padding: .5em;
+}

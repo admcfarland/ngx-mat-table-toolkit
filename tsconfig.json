@@ -9,6 +9,11 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true,
+    "paths": {
+      "ngx-mat-table-toolkit": [
+        "./dist/ngx-mat-table-toolkit"
+      ]
+    },
     "esModuleInterop": true,
     "sourceMap": true,
     "declaration": false,

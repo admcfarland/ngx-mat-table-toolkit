@@ -1,0 +1,10 @@
+<div class="truncated-text-container">
+  <span>{{ truncatedText }}</span>
+  @if (isTruncated) {
+    <button mat-icon-button
+      [attr.aria-label]="'Open modal to show full text for ' + truncatedText"
+      (click)="openFullTextModal()">
+      <mat-icon>info</mat-icon>
+    </button>
+  }
+</div>

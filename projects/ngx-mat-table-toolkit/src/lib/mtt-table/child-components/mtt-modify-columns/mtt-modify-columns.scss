@@ -1,0 +1,56 @@
+.column-modifications-container {
+  display: grid;
+  height: 100%;
+  box-sizing: border-box;
+}
+
+ul {
+  display: flex;
+  flex-flow: column wrap;
+  padding: 0 .25em;
+  margin-bottom: 0;
+  list-style: none;
+
+  li {
+    display: flex;
+    align-items: center;
+    height: 45px;
+
+    button {
+      margin: 0 .25rem;
+    }
+
+    span {
+      margin-left: 1rem;
+    }
+  }
+}
+
+.action-buttons {
+  display: flex;
+  flex-flow: column wrap;
+  margin-top: 1rem;
+  padding: 0.25em;
+  justify-content: flex-end;
+
+  button {
+    width: 100%;
+  }
+
+  .two-buttons {
+    display: flex;
+    column-gap: .125em;
+  }
+
+  button {
+    margin: .125rem auto;
+  }
+}
+
+.disabled-col {
+  opacity: 40%;
+}
+
+.spacer {
+  flex: auto;
+}

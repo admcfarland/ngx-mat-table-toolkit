@@ -17,7 +17,6 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "baseHref": "ngx-mat-table-toolkit",
             "outputPath": "dist/demo",
             "index": "demo/src/index.html",
             "browser": "demo/src/main.ts",
@@ -104,6 +103,49 @@
               "demo/src/**/*.ts",
               "demo/src/**/*.html"
             ]
+          }
+        }
+      }
+    },
+    "ngx-mat-table-toolkit": {
+      "projectType": "library",
+      "root": "projects/ngx-mat-table-toolkit",
+      "sourceRoot": "projects/ngx-mat-table-toolkit/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/ngx-mat-table-toolkit/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/ngx-mat-table-toolkit/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/ngx-mat-table-toolkit/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/ngx-mat-table-toolkit/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "projects/ngx-mat-table-toolkit/**/*.ts",
+              "projects/ngx-mat-table-toolkit/**/*.html"
+            ],
+            "eslintConfig": "projects/ngx-mat-table-toolkit/eslint.config.js"
           }
         }
       }
