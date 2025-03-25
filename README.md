@@ -1,8 +1,7 @@
-# Angular [Ngx-Mat-Table-Toolkit]
+# Angular Ngx-Mat-Table-Toolkit
 
 [![npm version](https://img.shields.io/npm/v/ngx-mat-table-toolkit.svg)](https://www.npmjs.com/package/ngx-mat-table-toolkit)
 [![License](https://img.shields.io/github/license/admcfarland/ngx-mat-table-toolkit)](LICENSE)
-[![Build Status](https://img.shields.io/github/actions/workflow/status/admcfarland/ngx-mat-table-toolkit/build.yml)](https://github.com/admcfarland/ngx-mat-table-toolkit/actions)
 
 A lightweight and modular Angular library for easing the creation of Material table components. Designed to extend Angular with table APIs, services and pipes for robust data visualization plus paginators for client and server side cases.
 
@@ -44,7 +43,7 @@ export class AppModule {}
 ```
 
 ```ts
-import { MttTable, TableConfig, Column } from 'ngx-mat-table-toolkit';
+import { MttTable, TableConfig } from 'ngx-mat-table-toolkit';
 
 interface FooBar {
   foo: string;
@@ -81,9 +80,16 @@ export class YourComponent {
       zebraRows: true,
       rowClass: (row: FooBar) => (row.foo === 'SpecialFoo' ? 'highlight' : ''),
     },
+    searchBarConfig: {
+      label: 'Search foo bar table',
+      placeholder: 'Example: First Name',
+    },
   }
 }
 ```
+
+### 🍽️ Kitchen Sink Example
+See [GitHub Pages](https://admcfarland.github.io/ngx-mat-table-toolkit/) for repository.
 
 ---
 
@@ -98,7 +104,7 @@ export class YourComponent {
 
 ---
 
-## 🛠️ APIs
+## 🧰 APIs
 
 ### Table
 
@@ -170,6 +176,9 @@ The `ColumnFilter<T>` interface defines the configuration for column-specific fi
 | Property       | Type                                   | Description                                                                                     | Default Value |
 |----------------|----------------------------------------|-------------------------------------------------------------------------------------------------|---------------|
 | `filterPredicate?`     | `(data: T, filter: string) => boolean` | A custom function for filtering column data. Returns `true` if the data matches the filter criteria. | N/A           |
+
+#### Cell Truncation
+When a text cell is truncated according to the property truncationLimit, an information icon appears to allow the complete value to be viewed in a dialog.
 
 ### Rows
 
@@ -259,45 +268,122 @@ The `AutoRefreshConfig` interface defines the configuration for automatically re
 | `enabled`    | `boolean`                | Indicates whether auto-refresh is enabled. When `true`, the table will automatically refresh at predefined intervals. | N/A           |
 | `onChange`   | `(enabled: boolean) => void` | Callback function triggered when the auto-refresh state changes. Can be used to start or stop automatic data refresh. | N/A           |
 
+## 🧩 Components
+
+### MttTable
+
+The `MttTable` component is the core component of the library, providing a robust and configurable Material table.
+
+#### Inputs for `MttTable<T>`
+
+The following table outlines the `@Input` properties available in the `MttTable` component:
+
+| Input         | Type              | Description                                                                                     | Default Value |
+|---------------|-------------------|-------------------------------------------------------------------------------------------------|---------------|
+| `tableConfig` | `TableConfig<T>`  | Configuration object for the table, including columns, rows, actions, and other settings.       | N/A           |
+| `tableData`   | `T[]`             | Array of data to be displayed in the table.                                                    | `[]`          |
+| `pageIndex`   | `number`          | Current page index for paginated data.                                                         | N/A           |
+| `pageSize`    | `number`          | Number of items to display per page.                                                           | N/A           |
+| `loading`     | `boolean`         | Indicates whether the table is in a loading state.                                             | `false`       |
+
+#### Outputs for `MttTable<T>`
+
+The following table outlines the `@Output` properties available in the `MttTable` component:
+
+| Output         | Type                | Description                                                                                     |
+|----------------|---------------------|-------------------------------------------------------------------------------------------------|
+| `filterChange` | `EventEmitter<string>` | Event emitted when the search bar value changes. The emitted value is the updated filter string. |
+| `sortChange`   | `EventEmitter<Sort>`   | Event emitted when the sort state changes. The emitted value is the updated sort configuration. |
+
+
+### MttTextDisplayModal
+
+The `MttTextDisplayModal` component is a very simple model for displaying text. Leverage how you see fit. In this package, it is what powers the ability to view truncated values in `MttTable` component.
+
+#### Inputs for `MttTable<T>`
+
+The following table outlines the `@Input` properties available in the `MttTable` component:
+| Input         | Type                | Description                         | Default Value           |
+|---------------|---------------------|-------------------------------------|-------------------------|
+| `title`       | string              | Modify the title of the dialog.     | `"Text Display"`        |
 ---
 
-## 🏠 Development & Contribution
+## 🔗 Pipes
 
-Want to contribute? Follow these steps:
+#### PathValuePipe
 
-1. Fork the repository.
-2. Clone it locally:  
-   ```sh
-   git clone https://github.com/admcfarland/ngx-mat-table-toolkit.git
-   ```
-3. Install dependencies:  
-   ```sh
-   npm install
-   ```
-4. Run the library in watch mode:  
-   ```sh
-   npm run build:watch
-   ```
-5. Run tests:  
-   ```sh
-   npm run test
-   ```
+The `PathValuePipe` is used to traverse nested data structures and return the value of a specified property.
+
+| Parameter       | Type               | Description                                                                                     |
+|------------------|--------------------|-------------------------------------------------------------------------------------------------|
+| `pathValue`   | `string`           | The dot-separated path to the desired property in the object.                                   |
+
+**Example:**
+
+In a component:
+```ts
+const user = { name: 'Alice', address: { city: 'New York' } };
+const city = this.pathValuePipe.transform<typeof user, string>(user, 'address.city');
+console.log(city); // Outputs: 'New York'
+```
+
+In a template:
+```html
+{{ user | pathValue:'address.city' }} <!-- Outputs 'New York' -->
+```
 
 ---
 
-## 🐜 License
+## 🛠️ Services
+
+### MttTableColumnService
+
+The `MttTableColumnService` provides utility methods to assist with column-related operations in the table.
+
+| Method                  | Parameters                          | Return Type       | Description                                                                                     |
+|-------------------------|-------------------------------------|-------------------|-------------------------------------------------------------------------------------------------|
+| `flattenObjectToColumns<T>`        | `columns: Column<any>[]`           | `string[]`        | Flattens a nested column structure into a list of column field names.                          |
+| `flattenColumnsAndMerge<T>`        | `columns: Column<any>[]`           | `string[]`        | Flattens a nested column structure into a list of column field names.                          |
+
+**Examples:**
+
+```ts
+// Flatten object into an array of TextColumn<T>
+const nestedObject = { id: 1, name: 'John Doe' };
+const determineColumnTypeFn = (key, value, path) => ({
+  type: 'text',
+  field: path,
+  header: key,
+  sortable: true,
+  visible: true,
+});
+const columns = flattenObjectToColumns(nestedObject, determineColumnTypeFn);
+```
+
+```ts
+// Flatten objects in the data to get column properties and merge with existing columns.
+currentColumns = this.mttTableColumnService.flattenAndMergeColumns(
+  fooTableData[barIndex].address,
+  determineColumnTypeFn,
+  currentColumns,
+  'address'
+);
+```
+---
+
+## 📜 License
 
 This project is licensed under the [MIT License](LICENSE).
 
 ---
 
-## 💌 Issues
+## 🐜 Issues
 
 For issues, please open an [issue](https://github.com/admcfarland/ngx-mat-table-toolkit/issues).  
 
 ---
 
-## 🌟 Show Your Support
+## 🌟 Show your support
 
 If you find this library useful, please ⭐ it on GitHub!
 
