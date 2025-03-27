@@ -298,14 +298,15 @@ The following table outlines the `@Output` properties available in the `MttTable
 
 ### MttTextDisplayModal
 
-The `MttTextDisplayModal` component is a very simple model for displaying text. Leverage how you see fit. In this package, it is what powers the ability to view truncated values in `MttTable` component.
+The `MttTextDisplayModal` component is a very simple model for displaying text. In this package, it is what powers the ability to view truncated cell values in `MttTable<T>` component. Since it is a modal, its values come from data (injected MAT_DIALOG_DATA).
 
-#### Inputs for `MttTable<T>`
+#### Data of MttTextDisplayModal
 
-The following table outlines the `@Input` properties available in the `MttTable` component:
-| Input         | Type                | Description                         | Default Value           |
-|---------------|---------------------|-------------------------------------|-------------------------|
-| `title`       | string              | Modify the title of the dialog.     | `"Text Display"`        |
+| Input          | Type         | Description             | Default Value                |
+|----------------|--------------|-------------------------|------------------------------|
+| `title?`       | `string`     | Header for modal.       | `"Text Display"`             |
+| `text`         | `string`     | A string of text.       | N/A                          |
+
 ---
 
 ## 🔗 Pipes
