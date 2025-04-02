@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.19.0](https://github.com/admcfarland/ngx-mat-table-toolkit/compare/v0.18.1...v0.19.0) (2025-04-02)
+
+
+### ⚠ BREAKING CHANGES
+
+* ColumnsConfig and RowActionsConfig require a type
+
+### Features
+
+* update configs to use generics ([5b7bb2d](https://github.com/admcfarland/ngx-mat-table-toolkit/commit/5b7bb2dfc968bdba57ae14d11b55d49884e08141)), closes [#46](https://github.com/admcfarland/ngx-mat-table-toolkit/issues/46)
+
 ### [0.18.1](https://github.com/admcfarland/ngx-mat-table-toolkit/compare/v0.18.0...v0.18.1) (2025-04-02)
 
 

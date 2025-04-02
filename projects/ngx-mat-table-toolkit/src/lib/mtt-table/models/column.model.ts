@@ -10,11 +10,11 @@ export type Column<T> = TextColumn<T> | ButtonColumn<T> | CheckboxColumn<T> | Sl
 /**
  * Configuration settings for table columns.
  */
-export interface ColumnsConfig {
+export interface ColumnsConfig<T> {
   /**
    * List of column configurations.
    */
-  columns: Column<any>[];
+  columns: Column<T>[];
 
   /**
    * Enables sticky column headers.
