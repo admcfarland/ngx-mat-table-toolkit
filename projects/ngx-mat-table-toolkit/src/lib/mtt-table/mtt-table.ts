@@ -87,7 +87,7 @@ export class MttTable<T> implements OnChanges, OnInit, OnDestroy {
   /**
    * Table configuration.
    */
-  @Input() config!: TableConfig<T>;
+  @Input({ required: true }) config!: TableConfig<T>;
 
   /**
    * Data to be displayed in the table.
