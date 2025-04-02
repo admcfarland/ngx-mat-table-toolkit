@@ -5,17 +5,17 @@
     <ng-container #sidenavContent></ng-container>
   </mat-sidenav>
   <mat-sidenav-content>
-    @if (tableConfig) {
+    @if (config) {
       <div class="table-filter-container">
         <!-- Table search bar -->
-        @if (tableConfig.searchBarConfig) {
+        @if (config.searchBarConfig) {
           <div class="table-search-bar">
             <mat-form-field
               [id]="searchBarId"
               appearance="outline"
               subscriptSizing="dynamic">
               <mat-label [@floatLabel]="floatState">
-                {{ tableConfig.searchBarConfig.label ?? defaultLabel }}
+                {{ config.searchBarConfig.label ?? defaultLabel }}
               </mat-label>
 
               <mat-icon matPrefix>search</mat-icon>
@@ -24,7 +24,7 @@
                 type="text"
                 matInput
                 [formControl]="searchControl"
-                [placeholder]="tableConfig.searchBarConfig.placeholder ?? defaultPlaceholder"
+                [placeholder]="config.searchBarConfig.placeholder ?? defaultPlaceholder"
                 (focus)="onFocusIn()"
                 (blur)="onBlur()" />
 
@@ -62,7 +62,7 @@
                   Deselect All
                 </button>
 
-                @for (action of tableConfig.selectedRowActions; track action) {
+                @for (action of config.selectedRowActions; track action) {
                   <button mat-menu-item
                     [attr.aria-label]="action.description"
                     [disabled]="action.disabled?.(getSelectedRows())"
@@ -75,18 +75,18 @@
           </div>
 
           <!-- Auto refresh switch toggle -->
-          @if (tableConfig.autoRefresh) {
+          @if (config.autoRefresh) {
             <div class="auto-refresh-toggle">
               <mat-slide-toggle
-                [checked]="tableConfig.autoRefresh.enabled"
-                (change)="tableConfig.autoRefresh.onChange(!$event.checked)">
+                [checked]="config.autoRefresh.enabled"
+                (change)="config.autoRefresh.onChange(!$event.checked)">
                 Auto refreshing
               </mat-slide-toggle>
             </div>
           }
           
           <!-- Table menu -->
-          @if ((tableConfig.tableActions?.length ?? 0) > 0) {
+          @if ((config.tableActions?.length ?? 0) > 0) {
             <button mat-icon-button
               color="primary"
               [matMenuTriggerFor]="tableMenu"
@@ -94,7 +94,7 @@
               <mat-icon>settings</mat-icon>
             </button>
             <mat-menu #tableMenu="matMenu">
-              @for (action of tableConfig.tableActions; track action) {
+              @for (action of config.tableActions; track action) {
                 <button mat-menu-item
                   [attr.aria-label]="action.description"
                   [disabled]="action.disabled?.()"
@@ -123,13 +123,13 @@
         <table [class.is-loading]="loading"
           mat-table
           matSort
-          [dataSource]="tableData"
-          [matSortActive]="tableConfig.sortOptions?.initialSort?.active ?? ''"
-          [matSortDirection]="tableConfig.sortOptions?.initialSort?.direction ?? ''"
+          [dataSource]="data"
+          [matSortActive]="config.sortOptions?.initialSort?.active ?? ''"
+          [matSortDirection]="config.sortOptions?.initialSort?.direction ?? ''"
           (matSortChange)="onSortChange($event)">
     
           <!-- Column for multiple row checkbox selection. -->
-          @if (tableConfig.rowsConfig?.multiRowSelection) {
+          @if (config.rowsConfig?.multiRowSelection) {
             <ng-container matColumnDef="select">
               <th mat-header-cell *matHeaderCellDef>
                 <mat-checkbox
@@ -150,7 +150,7 @@
           }
     
           <!-- Column for numbered rows. -->
-          @if (tableConfig.rowsConfig?.showRowNumbers) {
+          @if (config.rowsConfig?.showRowNumbers) {
             <ng-container matColumnDef="#">
               <th mat-header-cell *matHeaderCellDef> # </th>
               <td mat-cell *matCellDef="let row; let i = index"> {{ getRowNumber(i) }} </td>
@@ -158,7 +158,7 @@
           }
     
           <!-- Columns generated from table configuration. -->
-          @for (column of tableConfig.columnsConfig.columns; track column.field) {
+          @for (column of config.columnsConfig.columns; track column.field) {
             <ng-container matColumnDef="{{ column.field }}">
               <th mat-header-cell *matHeaderCellDef
                 mat-sort-header
@@ -192,8 +192,8 @@
           }
     
           <!-- Column for row actions. -->
-          @if (tableConfig.rowActions) {
-            <ng-container matColumnDef="actions" [stickyEnd]="tableConfig.rowActions.stickyActions">
+          @if (config.rowActions) {
+            <ng-container matColumnDef="actions" [stickyEnd]="config.rowActions.stickyActions">
               <th mat-header-cell *matHeaderCellDef> Actions </th>
               <td mat-cell *matCellDef="let row">
                 <button mat-icon-button
@@ -202,7 +202,7 @@
                   <mat-icon>more_vert</mat-icon>
                 </button>
                 <mat-menu #actionMenu="matMenu">
-                  @for (action of tableConfig.rowActions.actions; track action) {
+                  @for (action of config.rowActions.actions; track action) {
                     <button mat-menu-item
                       [attr.aria-label]="action.description"
                       [disabled]="action.disabled?.(row)"
@@ -216,13 +216,13 @@
           }
     
           <!-- Headers -->
-          <tr mat-header-row *matHeaderRowDef="displayColumns; sticky: tableConfig.columnsConfig.stickyHeaders"></tr>
+          <tr mat-header-row *matHeaderRowDef="displayColumns; sticky: config.columnsConfig.stickyHeaders"></tr>
 
           <!-- Data rows -->
           <tr mat-row *matRowDef="let row; columns: displayColumns"
-            [ngClass]="tableConfig.rowsConfig?.rowClass?.(row) ?? ''"
-            [class.hover]="tableConfig.rowsConfig?.hover"
-            [class.zebra-rows]="tableConfig.rowsConfig?.zebraRows">
+            [ngClass]="config.rowsConfig?.rowClass?.(row) ?? ''"
+            [class.hover]="config.rowsConfig?.hover"
+            [class.zebra-rows]="config.rowsConfig?.zebraRows">
           </tr>
           <tr *matNoDataRow>No data to display</tr>
         </table>
