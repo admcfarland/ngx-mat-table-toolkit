@@ -2,6 +2,8 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.19.2](https://github.com/admcfarland/ngx-mat-table-toolkit/compare/v0.19.1...v0.19.2) (2025-04-02)
+
 ### [0.19.1](https://github.com/admcfarland/ngx-mat-table-toolkit/compare/v0.19.0...v0.19.1) (2025-04-02)
 
 

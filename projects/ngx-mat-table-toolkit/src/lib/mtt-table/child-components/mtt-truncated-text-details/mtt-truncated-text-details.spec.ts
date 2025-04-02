@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MttTruncatedTextDetailsComponent } from './mtt-truncated-text-details';
+import { MttTruncatedTextDetails } from './mtt-truncated-text-details';
 
 describe('TruncatedTextDetailsComponent', () => {
-  let component: MttTruncatedTextDetailsComponent;
-  let fixture: ComponentFixture<MttTruncatedTextDetailsComponent>;
+  let component: MttTruncatedTextDetails;
+  let fixture: ComponentFixture<MttTruncatedTextDetails>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MttTruncatedTextDetailsComponent]
+      imports: [MttTruncatedTextDetails]
     })
       .compileComponents();
 
-    fixture = TestBed.createComponent(MttTruncatedTextDetailsComponent);
+    fixture = TestBed.createComponent(MttTruncatedTextDetails);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

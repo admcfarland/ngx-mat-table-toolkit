@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MttTextDisplayModalComponent } from './mtt-text-display-modal';
+import { MttTextDisplayModal } from './mtt-text-display-modal';
 
-describe('MttTextDisplayModalComponent', () => {
-  let component: MttTextDisplayModalComponent;
-  let fixture: ComponentFixture<MttTextDisplayModalComponent>;
+describe('MttTextDisplayModal', () => {
+  let component: MttTextDisplayModal;
+  let fixture: ComponentFixture<MttTextDisplayModal>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MttTextDisplayModalComponent]
+      imports: [MttTextDisplayModal]
     })
       .compileComponents();
 
-    fixture = TestBed.createComponent(MttTextDisplayModalComponent);
+    fixture = TestBed.createComponent(MttTextDisplayModal);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

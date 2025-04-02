@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MttModifyColumnsComponent } from './mtt-modify-columns';
+import { MttModifyColumns } from './mtt-modify-columns';
 
 describe('ModifyColumnsComponent', () => {
-  let component: MttModifyColumnsComponent;
-  let fixture: ComponentFixture<MttModifyColumnsComponent>;
+  let component: MttModifyColumns;
+  let fixture: ComponentFixture<MttModifyColumns>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MttModifyColumnsComponent]
+      imports: [MttModifyColumns]
     })
       .compileComponents();
 
-    fixture = TestBed.createComponent(MttModifyColumnsComponent);
+    fixture = TestBed.createComponent(MttModifyColumns);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
