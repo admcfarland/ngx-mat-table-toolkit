@@ -1,0 +1,21 @@
+:root {
+  --mtt-form-field-font-size: .875rem;
+
+  --mtt-search-bar-width: 37.5rem;
+
+  --mtt-header-row-height: 2.5625rem;
+  --mtt-header-row-background-color: #eeeeee;
+
+  --mtt-row-height: 2.25rem;
+  --mtt-row-hover-odd-background-color: #dddddd;
+  --mtt-row-hover-even-background-color: #d0d0d0;
+  --mtt-row-zebra-odd-background-color: var(--mat-app-background-color, transparent);
+  --mtt-row-zebra-even-background-color: #eeeeee;
+
+  --mtt-action-column-sticky-left-border: #b4b5bb;
+
+  --mtt-paginator-height: 3.5rem;
+  --mtt-paginator-mat-form-field-height: 2.5625rem;
+  --mtt-paginator-range-actions-height: 2.5rem;
+  --mtt-paginator-font-size: .875rem;
+}
