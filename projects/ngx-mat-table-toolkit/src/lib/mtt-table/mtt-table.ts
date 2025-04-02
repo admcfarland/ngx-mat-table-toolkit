@@ -87,12 +87,12 @@ export class MttTable<T> implements OnChanges, OnInit, OnDestroy {
   /**
    * Table configuration.
    */
-  @Input() tableConfig!: TableConfig<T>;
+  @Input() config!: TableConfig<T>;
 
   /**
    * Data to be displayed in the table.
    */
-  @Input() tableData: T[] = [];
+  @Input() data: T[] = [];
 
   /**
    * Current page index.
@@ -153,16 +153,16 @@ export class MttTable<T> implements OnChanges, OnInit, OnDestroy {
 
   ngOnChanges(changes: SimpleChanges): void {
     // When a table configuration comes in, set the columns.
-    if (changes['tableConfig']?.currentValue) {
-      const tableConfig = changes['tableConfig'].currentValue as TableConfig<T>;
+    if (changes['config']?.currentValue) {
+      const config = changes['config'].currentValue as TableConfig<T>;
       // Generate the table display.
-      this._generateDisplayColumns(tableConfig.columnsConfig.columns);
+      this._generateDisplayColumns(config.columnsConfig.columns);
       // Store the default column configuration.
-      this.defaultColumnOrder = tableConfig.columnsConfig.columns;
+      this.defaultColumnOrder = config.columnsConfig.columns;
       this.defaultColumnOrder.forEach(col => col.visible = col.visible ?? true);
 
       // If showing and hiding columns is allowed, add action to table.
-      if (tableConfig.columnsConfig.showHideColumns || tableConfig.columnsConfig.reorderColumns) {
+      if (config.columnsConfig.showHideColumns || config.columnsConfig.reorderColumns) {
         const modifyColumns = {
           label: 'Modify columns',
           description: 'Open sidenav menu to modify columns by showing or hiding and reordering',
@@ -171,7 +171,7 @@ export class MttTable<T> implements OnChanges, OnInit, OnDestroy {
             this.sidenavContent.clear();
             // Create the component for injection.
             const modColumns = this.sidenavContent.createComponent(MttModifyColumns);
-            modColumns.instance.columnConfig$ = of(this.tableConfig.columnsConfig);
+            modColumns.instance.columnConfig$ = of(this.config.columnsConfig);
             modColumns.instance.defaultCols = this.defaultColumnOrder;
             // Trigger change detection to ensure the columns$ observable is received
             this.detector.detectChanges();
@@ -180,7 +180,7 @@ export class MttTable<T> implements OnChanges, OnInit, OnDestroy {
             // Subscribe to the emitted event
             const sub = modColumns.instance.columnMods.subscribe((updatedCols: Column<T>[]) => {
               // Update table configuration.
-              this.tableConfig.columnsConfig.columns = updatedCols;
+              this.config.columnsConfig.columns = updatedCols;
               // Update columns.
               this._generateDisplayColumns(updatedCols);
               // Clean up the subscription and component reference
@@ -194,9 +194,9 @@ export class MttTable<T> implements OnChanges, OnInit, OnDestroy {
 
         // Check if modifying the columns has already been added
         // Author note: this is checked for the same table being created with the same configuration object.
-        const hasModifyAction = tableConfig.tableActions?.some(action => action.label === 'Modify columns');
+        const hasModifyAction = config.tableActions?.some(action => action.label === 'Modify columns');
         if (hasModifyAction === undefined || !hasModifyAction) {
-          tableConfig.tableActions = (hasModifyAction === undefined) ? [modifyColumns] : [modifyColumns, ...tableConfig.tableActions!];
+          config.tableActions = (hasModifyAction === undefined) ? [modifyColumns] : [modifyColumns, ...config.tableActions!];
         }
       }
 
@@ -206,7 +206,7 @@ export class MttTable<T> implements OnChanges, OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.searchControl.valueChanges.pipe(
-      debounceTime(this.tableConfig.searchBarConfig?.debounceDelay ?? DEBOUNCE_DELAY),
+      debounceTime(this.config.searchBarConfig?.debounceDelay ?? DEBOUNCE_DELAY),
       takeUntil(this._destroy$),
       map((value: string | null) => value = value || '')
     ).subscribe(value => {
@@ -271,9 +271,9 @@ export class MttTable<T> implements OnChanges, OnInit, OnDestroy {
    */
   protected toggleAllSelection(checked: boolean): void {
     if (checked) {
-      this.tableData.forEach(row => this.rss.selectRow(row, this.pageIndex));
+      this.data.forEach(row => this.rss.selectRow(row, this.pageIndex));
     } else {
-      this.tableData.forEach(row => this.rss.deselectRow(row, this.pageIndex));
+      this.data.forEach(row => this.rss.deselectRow(row, this.pageIndex));
     }
   }
 
@@ -282,7 +282,7 @@ export class MttTable<T> implements OnChanges, OnInit, OnDestroy {
    * @returns True if all rows are selected, false otherwise.
    */
   protected readonly allSelected = (): boolean => {
-    return this.tableData?.every(row => this.rss.isSelected(row, this.pageIndex));
+    return this.data?.every(row => this.rss.isSelected(row, this.pageIndex));
   };
 
   /**
@@ -290,8 +290,8 @@ export class MttTable<T> implements OnChanges, OnInit, OnDestroy {
    * @returns True if some rows are selected, false otherwise.
    */
   protected readonly someSelected = (): boolean => {
-    return this.tableData?.some(row => this.rss.isSelected(row, this.pageIndex)) &&
-      !this.tableData?.every(row => this.rss.isSelected(row, this.pageIndex));
+    return this.data?.some(row => this.rss.isSelected(row, this.pageIndex)) &&
+      !this.data?.every(row => this.rss.isSelected(row, this.pageIndex));
   };
 
   /**
@@ -331,17 +331,17 @@ export class MttTable<T> implements OnChanges, OnInit, OnDestroy {
     this.displayColumns = columns.filter(col => col.visible ?? true).map(col => col.field);
 
     // Include the row number column.
-    if (this.tableConfig.rowsConfig?.showRowNumbers) {
+    if (this.config.rowsConfig?.showRowNumbers) {
       this.displayColumns.unshift('#');
     }
 
     // Include the multi-row select column.
-    if (this.tableConfig.rowsConfig?.multiRowSelection) {
+    if (this.config.rowsConfig?.multiRowSelection) {
       this.displayColumns.unshift('select');
     }
 
     // Include the action column.
-    if (this.tableConfig.rowActions) {
+    if (this.config.rowActions) {
       this.displayColumns.push('actions');
     }
   }
