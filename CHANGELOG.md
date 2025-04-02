@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.21.0](https://github.com/admcfarland/ngx-mat-table-toolkit/compare/v0.20.1...v0.21.0) (2025-04-02)
+
+
+### ⚠ BREAKING CHANGES
+
+* earlier change to update MttTable inputs did not update all references
+
+### Features
+
+* correct missed input changes ([7bed0d4](https://github.com/admcfarland/ngx-mat-table-toolkit/commit/7bed0d446c919406f911613ec5f4c1dd1b559a12)), closes [#66](https://github.com/admcfarland/ngx-mat-table-toolkit/issues/66)
+
 ### [0.20.1](https://github.com/admcfarland/ngx-mat-table-toolkit/compare/v0.20.0...v0.20.1) (2025-04-02)
 
 ## [0.20.0](https://github.com/admcfarland/ngx-mat-table-toolkit/compare/v0.19.2...v0.20.0) (2025-04-02)
