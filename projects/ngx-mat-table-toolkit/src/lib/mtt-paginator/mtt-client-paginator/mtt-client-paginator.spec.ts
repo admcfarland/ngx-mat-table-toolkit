@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MttClientPaginatorComponent } from './mtt-client-paginator';
+import { MttClientPaginator } from './mtt-client-paginator';
 
-describe('MttClientPaginatorComponent', () => {
-  let component: MttClientPaginatorComponent;
-  let fixture: ComponentFixture<MttClientPaginatorComponent>;
+describe('MttClientPaginator', () => {
+  let component: MttClientPaginator<any>;
+  let fixture: ComponentFixture<MttClientPaginator<any>>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MttClientPaginatorComponent]
+      imports: [MttClientPaginator]
     })
       .compileComponents();
 
-    fixture = TestBed.createComponent(MttClientPaginatorComponent);
+    fixture = TestBed.createComponent(MttClientPaginator);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
