@@ -47,12 +47,12 @@ export class MttModifyColumns implements OnInit {
   /**
    * Observable for column configuration.
    */
-  columnConfig$ = new Observable<ColumnsConfig>();
+  columnConfig$ = new Observable<ColumnsConfig<any>>();
 
   /**
    * Column configuration.
    */
-  protected config!: ColumnsConfig;
+  protected config!: ColumnsConfig<any>;
 
   /**
    * Modified columns.

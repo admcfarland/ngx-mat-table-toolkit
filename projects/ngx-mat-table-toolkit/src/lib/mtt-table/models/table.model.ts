@@ -24,7 +24,7 @@ export interface TableConfig<T> {
   /**
    * Configuration for table columns.
    */
-  columnsConfig: ColumnsConfig;
+  columnsConfig: ColumnsConfig<T>;
 
   /**
    * Configuration for table rows.
@@ -54,7 +54,7 @@ export interface TableConfig<T> {
   /**
    * Configuration for actions available on individual rows.
    */
-  rowActions?: RowActionsConfig;
+  rowActions?: RowActionsConfig<T>;
 
   /**
    * Configuration for the table's search bar filter.
