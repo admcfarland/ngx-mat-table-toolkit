@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.19.1](https://github.com/admcfarland/ngx-mat-table-toolkit/compare/v0.19.0...v0.19.1) (2025-04-02)
+
+
+### Features
+
+* create base interface, BaseAction, for extension ([fd6d0c5](https://github.com/admcfarland/ngx-mat-table-toolkit/commit/fd6d0c51283ef043bdea6d063747e4c052f1fbb2))
+
 ## [0.19.0](https://github.com/admcfarland/ngx-mat-table-toolkit/compare/v0.18.1...v0.19.0) (2025-04-02)
 
 
