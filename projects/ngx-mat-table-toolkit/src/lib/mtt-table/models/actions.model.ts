@@ -1,7 +1,7 @@
 /**
- * Represents an action that can be performed on the entire table.
+ * Base interface for defining actions in the table.
  */
-export interface TableAction {
+interface BaseAction {
   /**
    * The label displayed for the action button.
    */
@@ -11,7 +11,12 @@ export interface TableAction {
    * An optional description providing more details about the action.
    */
   description?: string;
+}
 
+/**
+ * Represents an action that can be performed on the entire table.
+ */
+export interface TableAction extends BaseAction {
   /**
    * Callback function executed when the action is triggered.
    */
@@ -29,7 +34,6 @@ export interface TableAction {
    */
   disabled?: () => boolean;
 }
-
 
 /**
  * Configuration for row-level actions in the table.
@@ -50,17 +54,7 @@ export interface RowActionsConfig<T> {
  * Defines an action that can be performed on an individual row.
  * @template T - The type of the row data.
  */
-interface RowAction<T> {
-  /**
-   * The label displayed for the action button.
-   */
-  label: string;
-
-  /**
-   * An optional description providing more details about the action.
-   */
-  description?: string;
-
+interface RowAction<T> extends BaseAction {
   /**
    * Function executed when the action is triggered for a specific row.
    *
@@ -81,17 +75,7 @@ interface RowAction<T> {
  * Defines an action that can be performed on multiple selected rows.
  * @template T - The type of the row data.
  */
-export interface SelectedRowAction<T> {
-  /**
-   * The label displayed for the action button.
-   */
-  label: string;
-
-  /**
-   * An optional description providing more details about the action.
-   */
-  description?: string;
-
+export interface SelectedRowAction<T> extends BaseAction {
   /**
    * Function executed when the action is triggered for selected rows.
    *
