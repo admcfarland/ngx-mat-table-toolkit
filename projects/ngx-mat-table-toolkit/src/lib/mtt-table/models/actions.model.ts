@@ -34,7 +34,7 @@ export interface TableAction {
 /**
  * Configuration for row-level actions in the table.
  */
-export interface RowActionsConfig {
+export interface RowActionsConfig<T> {
   /**
    * Determines whether the actions column should remain fixed while scrolling.
    */
@@ -43,7 +43,7 @@ export interface RowActionsConfig {
   /**
    * List of available actions for each row.
    */
-  actions: RowAction<any>[];
+  actions: RowAction<T>[];
 }
 
 /**
