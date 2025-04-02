@@ -12,7 +12,7 @@
     "release": "standard-version",
     "postrelease": "git push --follow-tags origin main && npm publish",
     "prepare": "husky",
-    "postbuild:lib": "cp package.json projects/ngx-mat-table-toolkit/package.json"
+    "postbuild:lib": "cp package.json projects/ngx-mat-table-toolkit/package.json && cp README.md projects/ngx-mat-table-toolkit/README.md"
   },
   "repository": {
     "type": "git",
