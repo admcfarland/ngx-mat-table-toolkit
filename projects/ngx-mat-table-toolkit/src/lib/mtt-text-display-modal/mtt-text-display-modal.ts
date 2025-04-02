@@ -1,4 +1,4 @@
-import { Component, Inject, Input } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 
@@ -20,7 +20,7 @@ export class MttTextDisplayModal {
    * The title of the modal dialog.
    * Defaults to "Text Display" if no title is provided in the data.
    */
-  @Input() title = 'Text Display';
+  protected title = 'Text Display';
 
   /**
    * Creates an instance of the modal dialog.

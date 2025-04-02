@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.18.1](https://github.com/admcfarland/ngx-mat-table-toolkit/compare/v0.18.0...v0.18.1) (2025-04-02)
+
+
+### Features
+
+* @Input title is now simple string variable ([1e94bec](https://github.com/admcfarland/ngx-mat-table-toolkit/commit/1e94bec2692b18be0309563c0acf5bd3cbb17a90))
+* remove Input as import ([0f25e6f](https://github.com/admcfarland/ngx-mat-table-toolkit/commit/0f25e6f3e908c1e505eaea2172538ed454596dfe))
+
 ## 0.18.0 (2025-04-02)
 
 
