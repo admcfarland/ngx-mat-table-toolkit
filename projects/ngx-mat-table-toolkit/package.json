@@ -1,6 +1,6 @@
 {
   "name": "ngx-mat-table-toolkit",
-  "version": "0.17.0",
+  "version": "0.22.2",
   "description": "A toolkit for easing the creation of Material table components. Includes table APIs, services and pipes for robust data visualization and paginators for client-/server-side cases.",
   "repository": {
     "type": "git",
