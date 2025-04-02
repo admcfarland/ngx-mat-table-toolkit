@@ -11,7 +11,8 @@
     "prerelease": "npm test",
     "release": "standard-version",
     "postrelease": "git push --follow-tags origin main && npm publish",
-    "prepare": "husky"
+    "prepare": "husky",
+    "postversion": "cp package.json dist/ngx-mat-table-toolkit/package.json"
   },
   "repository": {
     "type": "git",
