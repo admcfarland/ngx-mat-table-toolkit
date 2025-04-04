@@ -6,106 +6,108 @@
   </mat-sidenav>
   <mat-sidenav-content>
     @if (config) {
-      <div class="table-filter-container">
-        <!-- Table search bar -->
-        @if (config.searchBarConfig) {
-          <div class="table-search-bar">
-            <mat-form-field
-              [id]="searchBarId"
-              appearance="outline"
-              subscriptSizing="dynamic">
-              <mat-label [@floatLabel]="floatState">
-                {{ config.searchBarConfig.label ?? defaultLabel }}
-              </mat-label>
+      @if (showHeader) {
+        <div class="table-header">
+          <!-- Table search bar -->
+          @if (config.searchBarConfig) {
+            <div class="table-search-bar">
+              <mat-form-field
+                [id]="searchBarId"
+                appearance="outline"
+                subscriptSizing="dynamic">
+                <mat-label [@floatLabel]="floatState">
+                  {{ config.searchBarConfig.label ?? defaultLabel }}
+                </mat-label>
 
-              <mat-icon matPrefix>search</mat-icon>
+                <mat-icon matPrefix>search</mat-icon>
 
-              <input
-                type="text"
-                matInput
-                [formControl]="searchControl"
-                [placeholder]="config.searchBarConfig.placeholder ?? defaultPlaceholder"
-                (focus)="onFocusIn()"
-                (blur)="onBlur()" />
+                <input
+                  type="text"
+                  matInput
+                  [formControl]="searchControl"
+                  [placeholder]="config.searchBarConfig.placeholder ?? defaultPlaceholder"
+                  (focus)="onFocusIn()"
+                  (blur)="onBlur()" />
 
-              @if (searchControl.value) {
-                <button mat-icon-button
-                  matSuffix
-                  aria-label="Clear search bar"
-                  (click)="searchControl.setValue('')">
-                  <mat-icon>close</mat-icon>
-                </button>
+                @if (searchControl.value) {
+                  <button mat-icon-button
+                    matSuffix
+                    aria-label="Clear search bar"
+                    (click)="searchControl.setValue('')">
+                    <mat-icon>close</mat-icon>
+                  </button>
+                }
+              </mat-form-field>
+            </div>
+          }
+          
+          <div class="table-non-search-bar-container">
+            <!-- Menu trigger button for multiple row selection -->
+            <div class="multiple-selection-container">
+              @if (getSelectedRows().length) {
+                <span>{{ getSelectedRows().length | number }} row{{ getSelectedRows().length > 1 ? 's' : '' }} selected</span>
               }
-            </mat-form-field>
-          </div>
-        }
-        
-        <div class="table-non-search-bar-container">
-          <!-- Menu trigger button for multiple row selection -->
-          <div class="multiple-selection-container">
-            @if (getSelectedRows().length) {
-              <span>{{ getSelectedRows().length | number }} row{{ getSelectedRows().length > 1 ? 's' : '' }} selected</span>
+              @if (someSelected() || allSelected()) {
+                <button mat-icon-button
+                  color="primary"
+                  [matTooltip]="multiRowActionMenuTooltip"
+                  [matMenuTriggerFor]="selectedRowMenu"
+                  [disabled]="loading">
+                  <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #selectedRowMenu="matMenu">
+                  <!-- Deselect menu option -->
+                  <button mat-menu-item
+                    aria-label="Deselect all row selections"
+                    (click)="deselectAllRows()">
+                    Deselect All
+                  </button>
+
+                  @for (action of config.selectedRowActions; track action) {
+                    <button mat-menu-item
+                      [attr.aria-label]="action.description"
+                      [disabled]="action.disabled?.(getSelectedRows())"
+                      (click)="action.action(getSelectedRows())">
+                      {{ action.label }}
+                    </button>
+                  }
+                </mat-menu>
+              }
+            </div>
+
+            <!-- Auto refresh switch toggle -->
+            @if (config.autoRefresh) {
+              <div class="auto-refresh-toggle">
+                <mat-slide-toggle
+                  [checked]="config.autoRefresh.enabled"
+                  (change)="config.autoRefresh.onChange(!$event.checked)">
+                  Auto refreshing
+                </mat-slide-toggle>
+              </div>
             }
-            @if (someSelected() || allSelected()) {
+            
+            <!-- Table menu -->
+            @if ((config.tableActions?.length ?? 0) > 0) {
               <button mat-icon-button
                 color="primary"
-                [matTooltip]="multiRowActionMenuTooltip"
-                [matMenuTriggerFor]="selectedRowMenu"
+                [matMenuTriggerFor]="tableMenu"
                 [disabled]="loading">
-                <mat-icon>more_vert</mat-icon>
+                <mat-icon>settings</mat-icon>
               </button>
-              <mat-menu #selectedRowMenu="matMenu">
-                <!-- Deselect menu option -->
-                <button mat-menu-item
-                  aria-label="Deselect all row selections"
-                  (click)="deselectAllRows()">
-                  Deselect All
-                </button>
-
-                @for (action of config.selectedRowActions; track action) {
+              <mat-menu #tableMenu="matMenu">
+                @for (action of config.tableActions; track action) {
                   <button mat-menu-item
                     [attr.aria-label]="action.description"
-                    [disabled]="action.disabled?.(getSelectedRows())"
-                    (click)="action.action(getSelectedRows())">
+                    [disabled]="action.disabled?.()"
+                    (click)="action.action()">
                     {{ action.label }}
                   </button>
                 }
               </mat-menu>
             }
           </div>
-
-          <!-- Auto refresh switch toggle -->
-          @if (config.autoRefresh) {
-            <div class="auto-refresh-toggle">
-              <mat-slide-toggle
-                [checked]="config.autoRefresh.enabled"
-                (change)="config.autoRefresh.onChange(!$event.checked)">
-                Auto refreshing
-              </mat-slide-toggle>
-            </div>
-          }
-          
-          <!-- Table menu -->
-          @if ((config.tableActions?.length ?? 0) > 0) {
-            <button mat-icon-button
-              color="primary"
-              [matMenuTriggerFor]="tableMenu"
-              [disabled]="loading">
-              <mat-icon>settings</mat-icon>
-            </button>
-            <mat-menu #tableMenu="matMenu">
-              @for (action of config.tableActions; track action) {
-                <button mat-menu-item
-                  [attr.aria-label]="action.description"
-                  [disabled]="action.disabled?.()"
-                  (click)="action.action()">
-                  {{ action.label }}
-                </button>
-              }
-            </mat-menu>
-          }
         </div>
-      </div>
+      }
 
       <!-- Slot for anything to enhance table visuals like column filter and/or mat-chip quick filter options. -->
       <ng-content />
