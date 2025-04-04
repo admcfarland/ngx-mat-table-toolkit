@@ -133,6 +133,10 @@ export class MttTable<T> implements OnChanges, OnInit, OnDestroy {
   protected displayColumns: string[] = [];
   protected defaultColumnOrder!: Column<T>[];
 
+  // Whether to show header or not.
+  protected showHeader!: boolean;
+
+
   // Tooltip vars.
   protected multiRowActionMenuTooltip = 'Show more actions';
 
@@ -199,6 +203,14 @@ export class MttTable<T> implements OnChanges, OnInit, OnDestroy {
           config.tableActions = (hasModifyAction === undefined) ? [modifyColumns] : [modifyColumns, ...config.tableActions!];
         }
       }
+
+      // Determine if table header needs to be shown.
+      this.showHeader = !!config.columnsConfig.showHideColumns ||
+        !!config.columnsConfig.reorderColumns ||
+        !!config.searchBarConfig ||
+        !!config.autoRefresh ||
+        !!config.selectedRowActions ||
+        !!config.tableActions;
 
       this.detector.detectChanges();
     }
