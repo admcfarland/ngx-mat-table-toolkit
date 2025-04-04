@@ -9,16 +9,14 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatSelectChange, MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule } from '@angular/forms';
-import {
-  Column,
-  TableConfig,
-  MttClientPaginator,
-  MttPaginatorModule,
-  MttServerPaginator,
-  MttTable,
-  MttTableColumnService,
-  PathValuePipe
-} from 'ngx-mat-table-toolkit';
+import { MttTable } from '../../../projects/ngx-mat-table-toolkit/src/lib/mtt-table/mtt-table';
+import { MttPaginatorModule } from '../../../projects/ngx-mat-table-toolkit/src/lib/mtt-paginator/mtt-paginator.module';
+import { PathValuePipe } from '../../../projects/ngx-mat-table-toolkit/src/lib/mtt-table/pipes/path-value.pipe';
+import { MttClientPaginator } from '../../../projects/ngx-mat-table-toolkit/src/lib/mtt-paginator/mtt-client-paginator/mtt-client-paginator';
+import { MttServerPaginator } from '../../../projects/ngx-mat-table-toolkit/src/lib/mtt-paginator/mtt-server-paginator/mtt-server-paginator';
+import { TableConfig } from '../../../projects/ngx-mat-table-toolkit/src/lib/mtt-table/models/table.model';
+import { MttTableColumnService } from '../../../projects/ngx-mat-table-toolkit/src/lib/mtt-table/services/mtt-table-column.service';
+import { Column } from '../../../projects/ngx-mat-table-toolkit/src/lib/mtt-table/models/column.model';
 
 const AFREFRESH = 2000;
 
