@@ -309,6 +309,31 @@ The `MttTextDisplayModal` component is a very simple model for displaying text. 
 
 ---
 
+## 🎨 Styles
+
+### Global CSS Variables
+
+The following CSS variables are defined in `variables.scss` to provide consistent styling for the MttTable components:
+
+| Variable Name                                | Default Value         | Description                                                                 |
+|---------------------------------------------|-----------------------|-----------------------------------------------------------------------------|
+| `--mtt-form-field-font-size`                | `.875rem`             | Font size for form fields.                                                  |
+| `--mtt-search-bar-width`                    | `37.5rem`             | Width of the search bar.                                                    |
+| `--mtt-header-row-height`                   | `2.5625rem`           | Height of the table header row.                                             |
+| `--mtt-header-row-background-color`         | `#eeeeee`             | Background color of the table header row.                                   |
+| `--mtt-row-height`                          | `2.25rem`             | Height of table rows.                                                       |
+| `--mtt-row-hover-odd-background-color`      | `#dddddd`             | Background color for odd rows on hover.                                     |
+| `--mtt-row-hover-even-background-color`     | `#d0d0d0`             | Background color for even rows on hover.                                    |
+| `--mtt-row-zebra-odd-background-color`      | `var(--mat-app-background-color, transparent)` | Background color for odd rows in zebra striping.                           |
+| `--mtt-row-zebra-even-background-color`     | `#eeeeee`             | Background color for even rows in zebra striping.                           |
+| `--mtt-action-column-sticky-left-border`    | `#b4b5bb`             | Border color for sticky action columns.                                     |
+| `--mtt-paginator-height`                    | `3.5rem`              | Height of the paginator.                                                    |
+| `--mtt-paginator-mat-form-field-height`     | `2.5625rem`           | Height of the paginator's form field.                                       |
+| `--mtt-paginator-range-actions-height`      | `2.5rem`              | Height of the paginator's range actions.                                    |
+| `--mtt-paginator-font-size`                 | `.875rem`             | Font size for the paginator.                                                |
+
+---
+
 ## 🔗 Pipes
 
 #### PathValuePipe
