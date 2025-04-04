@@ -11,8 +11,8 @@
   <div class="outer-table-container">
     <div class="table-paginator-container">
       <mtt-table #clientTable
-        [tableConfig]="clientConfig"
-        [tableData]="paginatedData"
+        [config]="clientConfig"
+        [data]="paginatedData"
         [pageIndex]="cPageIndex"
         [pageSize]="cPageSize"
         (filterChange)="clientFilterChanged($event)"
@@ -78,8 +78,8 @@
     <div class="table-paginator-container">
       <mtt-table #serverTable
         [loading]="loading"
-        [tableConfig]="serverConfig"
-        [tableData]="(serverData$ | async) ?? []"
+        [config]="serverConfig"
+        [data]="(serverData$ | async) ?? []"
         [pageIndex]="sPageIndex"
         [pageSize]="sPageSize"
         (getData)="tableDataRequestServer()"
