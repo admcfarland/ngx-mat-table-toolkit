@@ -360,6 +360,32 @@ The `MttClientPaginator` component extends `MttBasePaginatorComponent` to provid
 |---|---|---|
 | `paginatedData` | `EventEmitter<T[]>` | Emits the paginated data slice. |
 
+### MttServerPaginator (extends MttBasePaginatorComponent)
+
+The `MttServerPaginator` component extends `MttBasePaginatorComponent` to provide server-side pagination functionality. It is designed for scenarios where data is fetched from a server in a paginated manner.
+
+Some important notes concerning the following properties:
+
+**totalItemsKnown**: This boolean property indicates whether the total number of items available on the server is known. If true, the paginator can display the total number of items and calculate the last page accurately. If false, the paginator assumes that the total number of items is unknown and adjusts its behavior accordingly (e.g., displaying "of many" instead of "of [total]").
+
+**totalPageCount**: This property stores the total number of pages, calculated based on the totalItems and pageSize. It's updated whenever totalItems or pageSize changes. This value is only valid when totalItemsKnown is true.
+
+**knownPages**: This property keeps track of how many pages have been "visited" or loaded. It's incremented in the paginate method. This is useful when totalItemsKnown is false, as it allows the paginator to navigate to pages that have been loaded, while preventing navigation beyond those pages.
+
+The component uses the fetchData event to emit the current pageIndex and pageSize whenever a new page is requested or the page size changes. The goToPage method handles user input for direct page navigation, ensuring the entered page number is within valid bounds (either based on totalPageCount if totalItemsKnown is true, or knownPages if it's false).
+
+***Author note**: It could be considered a "best practice" that when the totalItemsKnown is true and a table refresh is performed, that this property be set to false because, ideally, the amount of items in the server would be unknown after a fetch.
+
+| Output | Type | Description |
+|---|---|---|
+| `fetchData` | `EventEmitter<PaginatorState>` | Event emitted to fetch data based on the current pagination state. |
+
+| Property | Type | Description |
+|---|---|---|
+| `totalItemsKnown` | `boolean` | Indicates whether the total number of items is known. |
+| `totalPageCount` | `number` | The total number of pages. |
+| `knownPages` | `number` | The number of pages that are known. |
+
 ---
 
 ## 🎨 Styles
