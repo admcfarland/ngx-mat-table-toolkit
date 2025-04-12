@@ -39,7 +39,7 @@ export class AppModule {}
 ### 2️⃣ Basic Example
 
 ```html
-<mtt-table [tableConfig]="config"></mtt-table>
+<mtt-table [config]="config"></mtt-table>
 ```
 
 ```ts
@@ -280,11 +280,11 @@ The following table outlines the `@Input` properties available in the `MttTable`
 
 | Input         | Type              | Description                                                                                     | Default Value |
 |---------------|-------------------|-------------------------------------------------------------------------------------------------|---------------|
-| `tableConfig` | `TableConfig<T>`  | Configuration object for the table, including columns, rows, actions, and other settings.       | N/A           |
-| `tableData`   | `T[]`             | Array of data to be displayed in the table.                                                    | `[]`          |
-| `pageIndex`   | `number`          | Current page index for paginated data.                                                         | N/A           |
-| `pageSize`    | `number`          | Number of items to display per page.                                                           | N/A           |
-| `loading`     | `boolean`         | Indicates whether the table is in a loading state.                                             | `false`       |
+| `config`      | `TableConfig<T>`  | Configuration object for the table, including columns, rows, actions, and other settings.       | N/A           |
+| `data`        | `T[]`             | Array of data to be displayed in the table.                                                     | `[]`          |
+| `pageIndex`   | `number`          | Current page index for paginated data.                                                          | N/A           |
+| `pageSize`    | `number`          | Number of items to display per page.                                                            | N/A           |
+| `loading`     | `boolean`         | Indicates whether the table is in a loading state.                                              | `false`       |
 
 #### Outputs for `MttTable<T>`
 
