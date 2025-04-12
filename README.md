@@ -367,9 +367,10 @@ In a template:
 The `MttTableColumnService` provides utility methods to assist with column-related operations in the table.
 
 | Method                  | Parameters                          | Return Type       | Description                                                                                     |
+| Method                  | Parameters                          | Return Type       | Description                                                                                     |
 |-------------------------|-------------------------------------|-------------------|-------------------------------------------------------------------------------------------------|
-| `flattenObjectToColumns<T>`        | `columns: Column<any>[]`           | `string[]`        | Flattens a nested column structure into a list of column field names.                          |
-| `flattenColumnsAndMerge<T>`        | `columns: Column<any>[]`           | `string[]`        | Flattens a nested column structure into a list of column field names.                          |
+| `flattenObjectToColumns<T>`        | `columns: Column<any>[]`           | `string[]`        | Flattens a nested object structure into a list of column field names.                          |
+| `flattenColumnsAndMerge<T>`        | `columns: Column<any>[]`           | `string[]`        | Merges flattened columns with an existing list of column field names.                          |
 
 **Examples:**
 
