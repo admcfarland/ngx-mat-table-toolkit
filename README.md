@@ -429,12 +429,14 @@ In a component:
 ```ts
 const user = { name: 'Alice', address: { city: 'New York' } };
 const city = this.pathValuePipe.transform<typeof user, string>(user, 'address.city');
-console.log(city); // Outputs: 'New York'
+// Outputs: 'New York'
+console.log(city);
 ```
 
 In a template:
 ```html
-{{ user | pathValue:'address.city' }} <!-- Outputs 'New York' -->
+<!-- Outputs 'New York' -->
+{{ user | pathValue:'address.city' }}
 ```
 
 ---
