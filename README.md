@@ -295,17 +295,70 @@ The following table outlines the `@Output` properties available in the `MttTable
 | `filterChange` | `EventEmitter<string>` | Event emitted when the search bar value changes. The emitted value is the updated filter string. |
 | `sortChange`   | `EventEmitter<Sort>`   | Event emitted when the sort state changes. The emitted value is the updated sort configuration. |
 
-
 ### MttTextDisplayModal
 
 The `MttTextDisplayModal` component is a very simple model for displaying text. In this package, it is what powers the ability to view truncated cell values in `MttTable<T>` component. Since it is a modal, its values come from data (injected MAT_DIALOG_DATA).
 
-#### Data of MttTextDisplayModal
+#### Inputs for MttTextDisplayModal
 
 | Input          | Type         | Description             | Default Value                |
 |----------------|--------------|-------------------------|------------------------------|
 | `title?`       | `string`     | Header for modal.       | `"Text Display"`             |
 | `text`         | `string`     | A string of text.       | N/A                          |
+
+### MttBasePaginatorComponent
+
+The `MttBasePaginatorComponent` component is an abstract base class for creating custom paginators. It provides the basic functionality for paginating data, such as navigating between pages, setting the page size, and displaying the total number of items.
+
+#### Inputs for `MttBasePaginatorComponent<T>`
+
+| Input | Type | Description |
+|---|---|---|
+| `pageIndex` | `number` | The current page index. |
+| `length` | `number` | The length of the total number of items that are being paginated. |
+| `pageSize` | `number` | Number of items to display on a page. |
+| `pageSizeOptions` | `number[]` | The set of provided page size options to display to the user. |
+| `accessibleLabel` | `string` | Accessible label for the paginator. |
+| `hidePageSize` | `boolean` | Whether to hide the page size selection UI from the user. |
+| `showFirstLastButtons` | `boolean` | Whether to show the first/last buttons UI to the user. |
+| `disabled` | `boolean` | Whether the paginator is disabled. |
+| `showGoToPage` | `boolean` | Whether to show the Go to page input to the user. |
+
+#### Outputs for `MttBasePaginatorComponent<T>`
+
+| Output | Type | Description |
+|---|---|---|
+| `page` | `EventEmitter<PageEvent>` | Event emitted when the paginator changes the page size or page index. |
+
+#### Properties of `MttBasePaginatorComponent<T>`
+
+| Property | Type | Description |
+|---|---|---|
+| `pageIndex` | `number` | The current page index. |
+| `length` | `number` | The length of the total number of items that are being paginated. |
+| `pageSize` | `number` | Number of items to display on a page. |
+| `pageSizeOptions` | `number[]` | The set of provided page size options to display to the user. |
+| `accessibleLabel` | `string` | Accessible label for the paginator. |
+| `hidePageSize` | `boolean` | Whether to hide the page size selection UI from the user. |
+| `showFirstLastButtons` | `boolean` | Whether to show the first/last buttons UI to the user. |
+| `disabled` | `boolean` | Whether the paginator is disabled. |
+| `showGoToPage` | `boolean` | Whether to show the Go to page input to the user. |
+
+### MttClientPaginator (extends MttBasePaginatorComponent)
+
+The `MttClientPaginator` component extends `MttBasePaginatorComponent` to provide client-side pagination. It takes the entire dataset and emits a slice of the data based on the current page index and page size.
+
+#### Inputs for MttClientPaginator
+
+| Input | Type | Description |
+|---|---|---|
+| `totalData` | `T[]` | The total data array to be paginated. |
+
+#### Outputs for MttClientPaginator
+
+| Output | Type | Description |
+|---|---|---|
+| `paginatedData` | `EventEmitter<T[]>` | Emits the paginated data slice. |
 
 ---
 
